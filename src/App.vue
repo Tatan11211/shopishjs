@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Navsearch />
     <Nav />
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
@@ -11,9 +12,11 @@
 
 <script>
 import Nav from './components/Nav.vue'
+import Navsearch from './components/Navsearch.vue'
 
 export default {
   components:{
+    Navsearch,
     Nav
   }
 }
