@@ -1,16 +1,29 @@
 <template>
   <div class="nav">
-    <b-navbar class="navbar container" toggleable="lg" type="dark" variant="info">
-
+    <b-navbar
+      class="navbar container d-flex"
+      toggleable="lg"
+      type="dark"
+      variant="info"
+    >
       <b-navbar-toggle class="toggle" target="nav-collapse"></b-navbar-toggle>
 
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav class="nav-container">
-          <b-nav-item href="#"
-            ><router-link to="/">Home</router-link></b-nav-item
+      <b-collapse class="navcollab fs-5 dark" id="nav-collapse" is-nav>
+        <b-navbar-nav class="nav-container d-flex justify-content-between">
+          <b-nav-item class="navitem" href="#"
+            ><router-link to="/">Inicio</router-link></b-nav-item
           >
-          <b-nav-item href="#"
-            ><router-link to="/about">About</router-link></b-nav-item
+          <b-nav-item class="navitem" href="#"
+            ><router-link to="/about">pesca</router-link></b-nav-item
+          >
+          <b-nav-item class="navitem" href="#"
+            ><router-link to="/about">camping</router-link></b-nav-item
+          >
+          <b-nav-item class="navitem" href="#"
+            ><router-link to="/about">prendas</router-link></b-nav-item
+          >
+          <b-nav-item class="navitem"  href="#"
+            ><router-link to="/about">contáctenos</router-link></b-nav-item
           >
         </b-navbar-nav>
       </b-collapse>
@@ -25,11 +38,38 @@
 }
 
 .navbar {
-    background-color: white !important;
+  background-color: white !important;
 }
 
 .toggle {
-  color: #145DA0 !important;
-  background-color: #B1D4E0 !important;
+  background-color: #b1d4e0 !important;
+}
+
+.navcollab {
+  flex-direction: column;
+}
+
+.navcollab a {
+  color: black !important;
+}
+
+.navcollab a:hover {
+  color: white !important;
+}
+
+.navitem {
+  padding: 5px;
+  border: 1px solid #145da0;
+  margin-right: 2px;
+}
+
+.navitem:hover {
+ background-color:#145da0;
+}
+
+@media (max-width: 991px) {
+  .navitem {
+    margin-top: 2px;
+  }
 }
 </style>
