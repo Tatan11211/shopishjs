@@ -48,6 +48,7 @@
   }
 
   .searchitem {
+    width: 100%;
     flex-direction: column;
     align-self: baseline;
     margin-top: 4px;
@@ -67,6 +68,7 @@
 
   .inputtext {
     height: 50px;
+    width: 100%;
   }
 
   .btn {
