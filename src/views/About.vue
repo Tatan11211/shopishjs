@@ -1,5 +1,14 @@
 <template>
     <div class="about">
-        <h1 class="text-primary">About pesca amigos</h1>
+        <Workingpage />
     </div>
 </template>
+
+<script>
+import Workingpage from '../components/Workingpage.vue'
+export default {
+    components:{
+        Workingpage
+    }
+}
+</script>
