@@ -26,6 +26,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name:'Navsearch'
+}
+</script>
+
 <style scoped>
 
 .navbar {

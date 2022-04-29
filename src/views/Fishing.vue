@@ -1,6 +1,14 @@
 <template>
     <div class="fishing container d-flex flex-wrap ">
-        <Product
+
+        <div class="card-content card flex" v-for="(item, index) in allShirts" :key="index">
+            <Product
+                :name = item.name
+                :price = item.price
+                :description = item.description
+            />
+        </div>
+        <!-- <Product
             :name = products.product1.name
             :price = products.product1.price
             :description = products.product1.description
@@ -24,14 +32,19 @@
             :name = products.product5.name
             :price = products.product5.price
             :description= products.product5.description
-        />
+        /> -->
     </div>
 </template>
 
 <script>
-import Product from '../components/Product.vue';
+import Product from '../components/Product';
+import {mapActions} from 'vuex'
+import {mapGetters} from 'vuex'
+
+// import store from '@/store';
+
 export default {
-    name: 'fishing',
+    name: 'Fishing',
     data(){
         return {
             products:{
@@ -63,9 +76,57 @@ export default {
             }
         }
     },
+
+    mounted(){
+        this.getProducts()
+    },
+
+    watch: {
+        allShirts: function(){
+            console.log("productos watch: ", this.allShirts)
+        }
+    },
+
+    methods:{
+        ...mapActions(['getProducts'])
+    },
+
+    computed: {
+        ...mapGetters({allShirts:'getAllShirts'})
+    },
+
     components:{
         Product
     }
 }
 </script>
 
+<style scoped>
+
+.card-content {
+    margin: 5px 20px;
+    width: calc(25% - (20px * 2));
+}
+
+/* responsive products grid */
+@media (max-width: 1024px) {
+    .card-content {
+        margin: 5px 20px;
+        width: calc(30% - (20px * 2));
+    }
+}
+
+@media (max-width: 768px) {
+    .card-content {
+        margin: 5px 20px;
+        width: calc(50% - (20px * 2));
+    }
+}
+
+@media (max-width: 480px) {
+    .card-content {
+        margin: 5px 20px;
+        width: calc(100% - (20px * 2));
+    }
+}
+</style>

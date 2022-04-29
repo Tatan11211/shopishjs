@@ -33,6 +33,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name:'Nav'
+}
+</script>
+
 <style scoped>
 .nav-container a {
   text-decoration: none;

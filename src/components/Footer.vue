@@ -63,8 +63,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  name:'Footer',
+
+}
+</script>
+
 <style scoped>
 .footer {
+  margin-top: auto;
   background-color: black;
   padding: 20px;
 }

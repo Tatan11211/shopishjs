@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="`position:relative; height:${windowSize}px; overflow-y:scroll;`" class="d-flex flex-column">
     <Navsearch />
     <Nav />
     <!-- <div id="nav">
@@ -25,7 +25,7 @@ export default {
   },
   methods:{
     setWindowSize(){
-      this.windowSize = window.innerHeight-95;
+      this.windowSize = window.innerHeight;
     }
   },
   components:{
@@ -61,4 +61,17 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+.size1 {
+  font-size: 15px;
+}
+
+.size2 {
+  font-size: 20px;
+}
+
+.size3 {
+  font-size: 27px;
+}
+
 </style>

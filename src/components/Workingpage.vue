@@ -4,3 +4,9 @@
         <img class="img m-5 img-fluid" src="../assets/images/404.jpg" alt="not found">
     </div>
 </template>
+
+<script>
+export default {
+    name:'Workingpage'
+}
+</script>
