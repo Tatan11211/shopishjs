@@ -1,15 +1,33 @@
 <template>
-    <div class="about">
-        <Workingpage />
-    </div>
+  <div class="about d-flex flex-column align-content-between">
+    <Navsearch />
+    <Nav />
+    <Workingpage />
+    <Footer />
+  </div>
 </template>
 
 <script>
-import Workingpage from '../components/Workingpage.vue'
+import Navsearch from '../components/Navsearch.vue';
+import Nav from '../components/Nav.vue';
+import Workingpage from '../components/Workingpage.vue';
+import Footer from '../components/Footer.vue';
+
 export default {
     name:'About',
     components:{
-        Workingpage
+        Navsearch,
+        Nav,
+        Workingpage,
+        Footer
     }
 }
 </script>
+
+<style scoped>
+
+.about {
+    height: 100%;
+}
+
+</style>
