@@ -15,18 +15,6 @@
           <router-link class="navitem nav-item nav-link" to="/about">Camping</router-link>
           <router-link class="navitem nav-item nav-link" to="/about">Prendas</router-link>
           <router-link class="navitem nav-item nav-link" to="/about">Contáctenos</router-link>
-          <!-- <b-nav-item class="navitem" href="/about"
-            ><router-link to="/about">pesca</router-link></b-nav-item
-          >
-          <b-nav-item class="navitem" href="#"
-            ><router-link to="/about">camping</router-link></b-nav-item
-          >
-          <b-nav-item class="navitem" href="#"
-            ><router-link to="/about">prendas</router-link></b-nav-item
-          >
-          <b-nav-item class="navitem" href="#"
-            ><router-link to="/about">contáctenos</router-link></b-nav-item
-          > -->
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -69,11 +57,39 @@ export default {
   padding: 9px;
   border: 1px solid #145da0;
   margin-right: 2px;
+  transition: transform 1s;
 }
 
 .navitem:hover {
   background-color: #145da0;
+  transform: scale(1.05);
 }
+
+/* .navitem {
+	-webkit-animation: scale-up-ver-center 0.4s ease-in-out both;
+  animation: scale-up-ver-center 0.4s ease-in-out both;
+}
+
+@-webkit-keyframes scale-up-ver-center {
+  0% {
+    -webkit-transform: scaleY(0.4);
+            transform: scaleY(0.4);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+@keyframes scale-up-ver-center {
+  0% {
+    -webkit-transform: scaleY(0.4);
+            transform: scaleY(0.4);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+} */
 
 @media (max-width: 991px) {
   .navitem {
