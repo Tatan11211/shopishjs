@@ -1,16 +1,19 @@
 <template>
-    <div class="dashboard">
+    <div class="dashboard d-flex">
 		<Nav />
+		<Products />
     </div>
 </template>
 
 <script>
 import Nav from '@/components/admin/Nav.vue';
+import Products from '@/components/admin/Products.vue'
 
 export default {
     name:"Dashboard",
 	components: {
-		Nav
+		Nav,
+		Products
 	},
 }
 </script>
