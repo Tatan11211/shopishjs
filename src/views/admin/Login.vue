@@ -43,8 +43,12 @@
 
 <script>
 export default {
-    name: "Login"
-}
+  name: 'Login-view',
+  data() {
+    return {
+    };
+  },
+};
 </script>
 
 <style scoped>

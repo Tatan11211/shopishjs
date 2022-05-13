@@ -1,5 +1,5 @@
 <template>
-  <div class="about d-flex flex-column align-content-between">
+  <div class='about d-flex flex-column align-content-between'>
     <Navsearch />
     <Nav />
     <Workingpage />
@@ -14,20 +14,18 @@ import Workingpage from '../components/Workingpage.vue';
 import Footer from '../components/Footer.vue';
 
 export default {
-    name:'About',
-    components:{
-        Navsearch,
-        Nav,
-        Workingpage,
-        Footer
-    }
-}
+  name: 'About-view',
+  components: {
+    Navsearch,
+    Nav,
+    Workingpage,
+    Footer,
+  },
+};
 </script>
 
 <style scoped>
-
 .about {
-    height: 100%;
+  height: 100%;
 }
-
 </style>

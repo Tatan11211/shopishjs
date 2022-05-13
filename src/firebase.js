@@ -1,13 +1,13 @@
-import firebase from "firebase/compat/app"
+import firebase from 'firebase/compat/app';
 
 require('firebase/compat/firestore');
 require('firebase/compat/auth');
 require('firebase/compat/storage');
 require('firebase/compat/database');
 
-//" compat v8 added cos there was an error importing things from firebase v9 or higher"
-
-require('dotenv').config()
+// " compat v8 added cos there was an error importing things from firebase v9 or higher"
+/* eslint-disable import/no-extraneous-dependencies */
+require('dotenv').config();
 
 const firebaseConfig = {
   apikey: process.env.VUE_APP_APIKEY,
@@ -17,11 +17,11 @@ const firebaseConfig = {
   storageBucket: process.env.VUE_APP_STORAGEBUCKET,
   messagingSenderId: process.env.VUE_APP_MESSAGINGSENDERID,
   appId: process.env.VUE_APP_APPID,
-  measurementId: process.env.VUE_APP_MEASUREMENTID
+  measurementId: process.env.VUE_APP_MEASUREMENTID,
 };
 
 // To avoid an error add if, inicializating app
-if(!firebase.app.lenght) {
+if (!firebase.app.lenght) {
   firebase.initializeApp(firebaseConfig);
 }
 
@@ -31,4 +31,9 @@ const db = firebase.firestore();
 const storage = firebase.storage();
 const database = firebase.database();
 
-export {firebase, db, storage, database}
+export {
+  firebase,
+  db,
+  storage,
+  database,
+};

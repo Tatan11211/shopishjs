@@ -1,24 +1,26 @@
 <template>
-  <div class="navsearch d-flex">
-    <b-navbar class="navbar container d-flex justify-content-between" toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand class="brandimg" href="#">
+  <div class='navsearch d-flex'>
+    <b-navbar
+      class='navbar container d-flex justify-content-between'
+      toggleable='lg'
+      type='dark'
+      variant='info'
+    >
+      <b-navbar-brand class='brandimg' href='#'>
         <img
-          class="logo img-fluid"
-          src="../assets/images/logopesca.png"
-          alt="Reponsive image"
+          class='logo img-fluid'
+          src='../assets/images/logopesca.png'
+          alt='Reponsive image'
         />
       </b-navbar-brand>
-      <form class="searchitem  d-flex my-2 my-lg-0">
+      <form class='searchitem d-flex my-2 my-lg-0'>
         <input
-          class="inputtext form-control mr-sm-2 "
-          type="search"
-          placeholder="Productos..."
-          aria-label="Search"
+          class='inputtext form-control mr-sm-2'
+          type='search'
+          placeholder='Productos...'
+          aria-label='Search'
         />
-        <button
-          class="btn btn-outline-success my-2 my-sm-0"
-          type="submit"
-        >
+        <button class='btn btn-outline-success my-2 my-sm-0' type='submit'>
           Buscar
         </button>
       </form>
@@ -28,18 +30,17 @@
 
 <script>
 export default {
-  name:'Navsearch'
-}
+  name: 'Navsearch-component',
+};
 </script>
 
 <style scoped>
-
 .navbar {
-    background-color: white !important;
+  background-color: white !important;
 }
 
 .logo {
-    max-width: 120px;
+  max-width: 120px;
 }
 
 .form-control {

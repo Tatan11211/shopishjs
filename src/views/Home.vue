@@ -16,13 +16,13 @@ import Nav from '../components/Nav.vue';
 import Footer from '../components/Footer.vue';
 
 export default {
-    name:'Home',
-    components:{
-        Navsearch,
-        Nav,
-        Footer
-    }
-}
+  name: 'Home-view',
+  components: {
+    Navsearch,
+    Nav,
+    Footer,
+  },
+};
 </script>
 
 <style scoped>

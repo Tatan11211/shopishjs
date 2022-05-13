@@ -1,32 +1,35 @@
 <template>
-  <div id="app" :style="`position:relative; height:${windowSize}px; overflow-y:scroll;`" class="d-flex flex-column">
-    <router-view/>
+  <div
+    id='app'
+    :style='`position:relative; height:${windowSize}px; overflow-y:scroll;`'
+    class='d-flex flex-column'
+  >
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
   name: 'App',
-  data(){
-    return{
-      windowSize:0
-    }
+  data() {
+    return {
+      windowSize: 0,
+    };
   },
-  methods:{
-    setWindowSize(){
+  methods: {
+    setWindowSize() {
       this.windowSize = window.innerHeight;
-    }
+    },
   },
-  mounted(){
+  mounted() {
     this.setWindowSize();
-  }
-}
+  },
+};
 </script>
-
 
 <style>
 #app {
-  position:relative;
+  position: relative;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -58,5 +61,4 @@ export default {
 .size3 {
   font-size: 27px;
 }
-
 </style>

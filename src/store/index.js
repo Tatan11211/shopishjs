@@ -1,54 +1,56 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import {db} from '../firebase'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import { db } from '../firebase';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
 
-    AllShirts : {},
+    AllShirts: {},
 
   },
   mutations: {
 
+    /* eslint no-param-reassign: "error" */
     setAllShirts(state, payload) {
-      state.AllShirts = {}
+      state.AllShirts = {};
       Object.keys(payload).map((key) => {
-          state.AllShirts[key] = payload[key]
-      })
-      console.log("set all shirts: ", state.AllShirts)
-    }
+        state.AllShirts[key] = payload[key];
+        return state.AllShirts;
+      });
+      console.log('set all shirts: ', state.AllShirts);
+    },
 
   },
 
   actions: {
 
-    getProducts({commit}){
-      let resObj = {}
+    getProducts({ commit }) {
+      const resObj = {};
       db.collection('Products/categories/t-shirts').get()
-      .then(res =>{
-        console.log("res: ", res)
-        res.forEach(element => {
-          console.log(element.data().description)
-          resObj[element.id] = element.data()
+        .then((res) => {
+          console.log('res: ', res);
+          res.forEach((element) => {
+            console.log(element.data().description);
+            resObj[element.id] = element.data();
+          });
+          console.log('getProducts: ', resObj);
+          return commit('setAllShirts', resObj);
         })
-        console.log('getProducts: ', resObj)
-        return commit ('setAllShirts', resObj)
-      })
-      .catch(error => {
-        console.log("error extracting Allshirts: ", error)
-      })
-    }
+        .catch((error) => {
+          console.log('error extracting Allshirts: ', error);
+        });
+    },
   },
 
   getters: {
-    getAllShirts(state){
-      console.log("getallshirts: ", state.AllShirts)
-      return state.AllShirts
-    }
+    getAllShirts(state) {
+      console.log('getallshirts: ', state.AllShirts);
+      return state.AllShirts;
+    },
   },
 
   modules: {
-  }
-})
+  },
+});
