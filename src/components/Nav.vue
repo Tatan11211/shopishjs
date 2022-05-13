@@ -76,7 +76,7 @@ export default {
 }
 
 /* .navitem {
-	-webkit-animation: scale-up-ver-center 0.4s ease-in-out both;
+  -webkit-animation: scale-up-ver-center 0.4s ease-in-out both;
   animation: scale-up-ver-center 0.4s ease-in-out both;
 }
 
