@@ -17,5 +17,20 @@ module.exports = {
   rules: {
     'linebreak-style': 0,
     'no-console': 'off',
+    "vue/max-len": ["error", {
+      "code": 150,
+      "template": 150,
+      "tabWidth": 2,
+      "comments": 150,
+      "ignorePattern": "",
+      "ignoreComments": true,
+      "ignoreTrailingComments": true,
+      "ignoreUrls": false,
+      "ignoreStrings": true,
+      "ignoreTemplateLiterals": false,
+      "ignoreRegExpLiterals": false,
+      "ignoreHTMLAttributeValues": true,
+      "ignoreHTMLTextContents": false,
+    }]
   },
 };
