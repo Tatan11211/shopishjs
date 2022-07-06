@@ -1,8 +1,8 @@
 <template>
   <!-- <div class='card-content card flex'> -->
   <div class='card-items flex flex-column'>
-    <div class='title'>
-      <h2 class='size4'>{{ name }}</h2>
+    <div class='title d-flex flex-row justify-content-center'>
+      <h2 class='size4 ms-2'>{{ name }}</h2>
     </div>
     <div class='data-card'>
       <div class='image'>
@@ -37,4 +37,28 @@ export default {
   width: 100%;
   height: auto;
 }
+
+.btn-close {
+  border: none;
+}
+
+/* responsive products */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 0.6rem !important;
+  }
+}
+
 </style>

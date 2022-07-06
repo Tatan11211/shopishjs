@@ -1,10 +1,13 @@
+const Dotenv = require('dotenv-webpack');
+
 module.exports = {
+  plugins: [
+    new Dotenv(),
+  ],
   resolve: {
-    extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
     fallback: {
-      "fs": false,
-      "path": require.resolve("path-browserify")
+      fs: false,
     },
-    target: 'node',
   },
+  node: 'empty',
 };
