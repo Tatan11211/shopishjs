@@ -15,6 +15,8 @@ module.exports = {
     'vue',
   ],
   rules: {
+    'no-tabs': 0,
+    indent: 0,
     'linebreak-style': 0,
     'no-console': 'off',
     'vue/max-len': ['error', {
