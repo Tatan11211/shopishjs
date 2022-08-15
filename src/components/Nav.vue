@@ -10,21 +10,11 @@
 
       <b-collapse class='navcollab fs-5 dark' id='nav-collapse' is-nav>
         <b-navbar-nav class='nav-container d-flex justify-content-between'>
-          <router-link class='navitem nav-item nav-link' to='/'
-            >Inicio</router-link
-          >
-          <router-link class='navitem nav-item nav-link' to='/fishing'
-            >Pesca</router-link
-          >
-          <router-link class='navitem nav-item nav-link' to='/about'
-            >Camping</router-link
-          >
-          <router-link class='navitem nav-item nav-link' to='/about'
-            >Prendas</router-link
-          >
-          <router-link class='navitem nav-item nav-link' to='/about'
-            >Contáctenos</router-link
-          >
+          <b-nav-item class="navitem" to="/">Inicio</b-nav-item>
+          <b-nav-item class="navitem" to="/fishing">Pesca</b-nav-item>
+          <b-nav-item class="navitem" to="/about">Camping</b-nav-item>
+          <b-nav-item class="navitem" to="/about">Prendas</b-nav-item>
+          <b-nav-item class="navitem" to="/about">Contáctenos</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
