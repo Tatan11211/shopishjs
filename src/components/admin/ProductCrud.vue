@@ -62,15 +62,7 @@ export default {
 </script>
 
 <style scoped>
-.data-card {
-  height: 100%;
-}
-
-.productCrud {
-  height: 100%;
-}
-
-.card-items {
+.data-card, .productCrud, .card-items {
   height: 100%;
 }
 

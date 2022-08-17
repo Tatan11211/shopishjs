@@ -12,7 +12,6 @@ export default new Vuex.Store({
 
   },
   mutations: {
-
     /* eslint no-param-reassign: "error" */
     setAllShirts(state, payload) {
       state.AllShirts = {};
@@ -21,18 +20,15 @@ export default new Vuex.Store({
         return state.AllShirts;
       });
     },
-
     setproductToDelete(state, payload) {
       state.productToDelete = payload;
     },
-
     setNewShirtsList(state, payload) {
       delete state.AllShirts[`${payload}`];
     },
   },
 
   actions: {
-
     /* Getting the data (shirts) from the database and storing it in the state. */
     getProducts({ commit }) {
       const resObj = {};
@@ -50,12 +46,10 @@ export default new Vuex.Store({
           console.log('error extracting Allshirts: ', error);
         });
     },
-
     /* Setting the product to delete in state */
     deleteProduct({ commit }, payload) {
       commit('setproductToDelete', payload);
     },
-
     deleteProductDb({ commit }, payload) {
       console.log(`product to delete ACTION ${payload}`);
       db.collection('Products/categories/t-shirts').doc(payload).delete()
@@ -71,7 +65,6 @@ export default new Vuex.Store({
       console.log('getallshirts: ', state.AllShirts);
       return state.AllShirts;
     },
-
     getProductToDelete(state) {
       return state.productToDelete;
     },

@@ -1,5 +1,5 @@
 <template>
-  <div class='Nav d-flex'>
+  <div class='Nav grid'>
     <div
       class='sidebarContent d-flex flex-column flex-shrink-0 p-3 text-white'
       style='width: 300px'
@@ -382,6 +382,12 @@ export default {
 <style scoped>
 .Nav {
   height: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 90% 10%;
+  gap: 0px;
 }
 
 .dropdown-menu {

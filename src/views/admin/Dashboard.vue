@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard d-flex">
+  <div class="dashboard grid">
     <Nav />
     <Products />
   </div>
@@ -21,5 +21,10 @@ export default {
 <style scoped>
 .dashboard {
   height: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto 80%;
 }
 </style>

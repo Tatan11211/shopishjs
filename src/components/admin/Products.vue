@@ -1,5 +1,5 @@
 <template>
-  <div class="productsAdmin d-flex flex-column align-content-between">
+  <div class="productsAdmin flex-column align-content-between">
     <h1>productos admin</h1>
     <div class="container d-flex flex-wrap">
       <div class="grid">
