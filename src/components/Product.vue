@@ -35,6 +35,7 @@ export default {
 <style scoped>
 .img-product {
   width: 100%;
+  max-width: 250px;
   height: auto;
 }
 
