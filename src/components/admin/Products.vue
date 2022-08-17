@@ -2,17 +2,19 @@
   <div class="productsAdmin d-flex flex-column align-content-between">
     <h1>productos admin</h1>
     <div class="container d-flex flex-wrap">
-      <div
-        class="card-content card flex"
-        v-for="(item, index) in allShirts"
-        :key="index"
-      >
-        <Product
-          :id="index"
-          :name="item.name"
-          :price="item.price"
-          :description="item.description"
-        />
+      <div class="grid">
+        <div
+          class="card-content card"
+          v-for="(item, index) in allShirts"
+          :key="index"
+        >
+          <Product
+            :id="index"
+            :name="item.name"
+            :price="item.price"
+            :description="item.description"
+          />
+        </div>
       </div>
       <div>
         <!-- <b-button v-b-modal.modal-1>Launch demo modal</b-button> -->
@@ -200,17 +202,14 @@ export default {
     },
 
     async newProduct() {
+      /* if(this.productName !== '' ) */
       const refImg = ref.child(`images/${this.fileSelected.name}`);
       const metaData = { contentType: this.imgType };
-      console.log(refImg, metaData);
-      console.log('imgurl name: ', this.fileSelected.name);
       await refImg.put(this.fileSelected, metaData).then((e) => {
         console.log('puting img: ', e);
       });
-
       const urlDownload = await ref.child('images').child(this.fileSelected.name).getDownloadURL();
-
-      console.log('url:', urlDownload);
+      console.log('puting img: ', urlDownload);
     },
     newProductReset() {},
     handleSubmit() {
@@ -237,9 +236,10 @@ export default {
   height: 100%;
 }
 
-.card-content {
-  margin: 5px 20px;
-  width: calc(25% - (20px * 2));
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
 }
 
 .btn-newproduct {
@@ -247,24 +247,21 @@ export default {
 }
 
 /* responsive products grid */
-@media (max-width: 1024px) {
-  .card-content {
-    margin: 5px 20px;
-    width: calc(30% - (20px * 2));
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .card-content {
-    margin: 5px 20px;
-    width: calc(50% - (20px * 2));
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
-  .card-content {
-    margin: 5px 20px;
-    width: calc(100% - (20px * 2));
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 </style>

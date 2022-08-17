@@ -5,8 +5,8 @@
         <h2 class="size2 ms-2 mb-0 align-self-center flex-fill">{{ name }}</h2>
         <button class="btn-close m-2" @click="sendId()"></button>
       </div>
-      <div class="data-card d-flex flex-column">
-        <div class="image d-flex">
+      <div class="data-card d-flex flex-column justify-content-center">
+        <div class="image">
           <img
             src="../../assets/images/logopesca.png"
             class="img-product img-fluid"
@@ -76,6 +76,7 @@ export default {
 
 .img-product {
   width: 100%;
+  max-width: 250px;
   height: auto;
 }
 
