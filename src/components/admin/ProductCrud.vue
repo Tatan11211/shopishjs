@@ -8,14 +8,14 @@
       <div class="data-card d-flex flex-column justify-content-center">
         <div class="image">
           <img
-            src="../../assets/images/logopesca.png"
+            :src="img"
             class="img-product img-fluid"
-            alt=""
+            alt="../../assets/images/logopesca.png"
           />
         </div>
         <div class="data d-flex flex-column flex-fill">
           <h3 class="size3">{{ price }}$</h3>
-          <h4 class="descriptionLabel size2">{{ this.shortDescription(description) }}</h4>
+          <h4 class="descriptionLabel size2 mx-3">{{ this.shortDescription(description) }}</h4>
         </div>
         <hr>
         <div class="justify-content-center align-self-stretch">
@@ -36,12 +36,13 @@ export default {
     name: String,
     price: Number,
     description: String,
+    img: String,
   },
   methods: {
-    ...mapActions(['deleteProduct']),
+    ...mapActions(['setProductToDelete']),
 
     sendId() {
-      this.deleteProduct(this.id);
+      this.setProductToDelete(this.id);
     },
 
     shortDescription(description) {

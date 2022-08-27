@@ -9,28 +9,33 @@ export default new Vuex.Store({
 
     AllShirts: {},
     productToDelete: '',
+    productToUpload: {},
 
   },
   mutations: {
     /* eslint no-param-reassign: "error" */
-    setAllShirts(state, payload) {
+    setAllShirtsMu(state, payload) {
       state.AllShirts = {};
       Object.keys(payload).map((key) => {
         state.AllShirts[key] = payload[key];
         return state.AllShirts;
       });
     },
-    setproductToDelete(state, payload) {
+    setProductToDeleteMu(state, payload) {
       state.productToDelete = payload;
     },
-    setNewShirtsList(state, payload) {
+    setNewShirtsListMu(state, payload) {
       delete state.AllShirts[`${payload}`];
+    },
+    setUploadProductMu(state, payload) {
+      console.log(`upload product mutation: ${payload}`);
+      state.productToUpload = payload;
     },
   },
 
   actions: {
     /* Getting the data (shirts) from the database and storing it in the state. */
-    getProducts({ commit }) {
+    getProductsDb({ commit }) {
       const resObj = {};
       db.collection('Products/categories/t-shirts').get()
         .then((res) => {
@@ -39,16 +44,15 @@ export default new Vuex.Store({
             console.log(element.data().description);
             resObj[element.id] = element.data();
           });
-          console.log('getProducts: ', resObj);
-          return commit('setAllShirts', resObj);
+          return commit('setAllShirtsMu', resObj);
         })
         .catch((error) => {
           console.log('error extracting Allshirts: ', error);
         });
     },
     /* Setting the product to delete in state */
-    deleteProduct({ commit }, payload) {
-      commit('setproductToDelete', payload);
+    setProductToDelete({ commit }, payload) {
+      commit('setProductToDeleteMu', payload);
     },
     deleteProductDb({ commit }, payload) {
       console.log(`product to delete ACTION ${payload}`);
@@ -56,17 +60,34 @@ export default new Vuex.Store({
         .then((res) => {
           console.log('t-shirt deleted: ', res);
         });
-      commit('setNewShirtsList', payload);
+      commit('setNewShirtsListMu', payload);
+    },
+    setUploadProduct({ commit }, payload) {
+      commit('setUploadProductMu', payload);
+    },
+    // eslint-disable-next-line no-unused-vars
+    uploadProductDb({ commit }, payload) {
+      console.log(`product to db: ${payload}`);
+      db.collection('Products/categories/t-shirts').add({
+        name: payload.name,
+        price: payload.price,
+        description: payload.description,
+        img: payload.img,
+      }).then((doc) => {
+        console.log(doc.id);
+      });
     },
   },
 
   getters: {
     getAllShirts(state) {
-      console.log('getallshirts: ', state.AllShirts);
       return state.AllShirts;
     },
     getProductToDelete(state) {
       return state.productToDelete;
+    },
+    getProductToUpload(state) {
+      return state.productToUpload;
     },
   },
 

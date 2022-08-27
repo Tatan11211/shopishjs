@@ -24,7 +24,7 @@ export default {
 		return {};
 	},
   mounted() {
-    this.getProducts();
+    this.getProductsDb();
   },
 
   watch: {
@@ -34,7 +34,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(['getProducts']),
+    ...mapActions(['getProductsDb']),
   },
 
   computed: {
