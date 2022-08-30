@@ -1,26 +1,24 @@
 <template>
-  <div class="productCrud">
-    <div class="card-items d-flex flex-column">
-      <div class="title d-inline-flex flex-row justify-content-between">
-        <h2 class="size2 ms-2 mb-0 align-self-center flex-fill">{{ name }}</h2>
-        <button class="btn-close m-2" @click="sendId()"></button>
+  <div class="card-items d-flex flex-column">
+    <div class="title d-flex">
+      <h2 class="size2 ms-2 mb-0 align-self-center flex-fill">{{ name }}</h2>
+      <button class="btn-close m-2" @click="sendId()"></button>
+    </div>
+    <div class="data-card ">
+      <div class="image">
+        <img
+          :src="img"
+          class="img-product img-fluid"
+          alt="../../assets/images/logopesca.png"
+        />
       </div>
-      <div class="data-card d-flex flex-column justify-content-center">
-        <div class="image">
-          <img
-            :src="img"
-            class="img-product img-fluid"
-            alt="../../assets/images/logopesca.png"
-          />
-        </div>
-        <div class="data d-flex flex-column flex-fill">
-          <h3 class="size3">{{ price }}$</h3>
-          <h4 class="descriptionLabel size2 mx-3">{{ this.shortDescription(description) }}</h4>
-        </div>
-        <hr>
-        <div class="justify-content-center align-self-stretch">
-          <button type="button" class="btn-edit btn-primary m-2">Editar</button>
-        </div>
+      <div class="data d-flex flex-column">
+        <h3 class="size3">{{ price }}$</h3>
+        <h4 class="descriptionLabel size2 mx-3">{{ this.shortDescription(description) }}</h4>
+      </div>
+      <hr>
+      <div class="justify-content-center ">
+        <button type="button" class="btn-edit btn-primary m-2">Editar</button>
       </div>
     </div>
   </div>
@@ -42,6 +40,7 @@ export default {
     ...mapActions(['setProductToDelete']),
 
     sendId() {
+      console.log('this product id: ', this.id);
       this.setProductToDelete(this.id);
     },
 
@@ -63,7 +62,7 @@ export default {
 </script>
 
 <style scoped>
-.data-card, .productCrud, .card-items {
+.data-card, .card-items {
   height: 100%;
 }
 
