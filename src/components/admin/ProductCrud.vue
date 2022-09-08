@@ -4,12 +4,19 @@
       <h2 class="size2 ms-2 mb-0 align-self-center flex-fill">{{ name }}</h2>
       <button class="btn-close m-2" @click="sendId()"></button>
     </div>
-    <div class="data-card ">
+    <div class="data-card d-flex flex-column flex-shrink-1">
       <div class="image">
         <img
+          v-if="img"
           :src="img"
           class="img-product img-fluid"
-          alt="../../assets/images/logopesca.png"
+          alt="Img not found"
+        />
+        <img
+          v-else
+          src="../../assets/images/logopesca.png"
+          class="img-product img-fluid"
+          alt="Img not found"
         />
       </div>
       <div class="data d-flex flex-column">
@@ -18,14 +25,20 @@
       </div>
       <hr>
       <div class="justify-content-center ">
-        <button type="button" class="btn-edit btn-primary m-2">Editar</button>
+        <button
+          type="button"
+          class="btn-edit btn-primary m-2"
+          @click="sendProductToEdit"
+        >
+          Editar
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapMutations } from 'vuex';
 
 export default {
   name: 'ProductCrud-component',
@@ -38,12 +51,11 @@ export default {
   },
   methods: {
     ...mapActions(['setProductToDelete']),
-
+    ...mapMutations(['setProductToEditMu']),
     sendId() {
       console.log('this product id: ', this.id);
       this.setProductToDelete(this.id);
     },
-
     shortDescription(description) {
       if (description !== null) {
         const descLenght = description.length;
@@ -57,12 +69,22 @@ export default {
       }
       return 'No tiene descripción.';
     },
+    sendProductToEdit() {
+      const productToEdit = {
+        id: this.id,
+        name: this.name,
+        price: this.price,
+        description: this.description,
+        img: this.img,
+      };
+      this.setProductToEditMu(productToEdit);
+    },
   },
 };
 </script>
 
 <style scoped>
-.data-card, .card-items {
+.data-card, .card-items, .data {
   height: 100%;
 }
 

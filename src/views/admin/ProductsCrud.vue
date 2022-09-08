@@ -1,10 +1,10 @@
 <template>
-  <div class="productsCrud gridMain">
-    <Nav/>
+  <div class="productsCrud">
     <div class="content">
+      <h1 class="mt-3">Products</h1>
       <Grid/>
       <router-link to="/AddProduct">
-        <button class="btn btn-success">Agregar producto</button>
+        <button @click="resetProductToEdit" class="btn btn-success my-3">Agregar producto</button>
       </router-link>
     </div>
     <b-modal
@@ -25,14 +25,13 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
-import Nav from '../../components/admin/Nav.vue';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 import Grid from '../../components/admin/GridProductsCrud.vue';
 
 export default {
   name: 'productsCrud-View',
+  layout: 'admin-layout',
   components: {
-    Nav,
     Grid,
   },
   watch: {
@@ -41,9 +40,16 @@ export default {
         this.$refs['delete-modal'].show();
       }
     },
+    productToEdit() {
+      if (this.productToEdit !== null) {
+        console.log('productToEdit', this.productToEdit);
+        this.$router.push('/AddProduct');
+      }
+    },
   },
   computed: {
     ...mapGetters({ productToDelete: 'getProductToDelete' }),
+    ...mapGetters({ productToEdit: 'getProductToEdit' }),
   },
   methods: {
     ...mapActions([
@@ -51,6 +57,7 @@ export default {
       'setProductToDelete',
       'getProductsDb',
     ]),
+    ...mapMutations(['setProductToEditMu']),
     confirmDelete() {
       console.log('eliminar el producto confirmado');
       this.$refs['delete-modal'].hide();
@@ -62,6 +69,9 @@ export default {
     resetProductToDelete() {
       this.setProductToDelete('');
     },
+    resetProductToEdit() {
+      this.setProductToEditMu(null);
+    },
   },
 };
 </script>
@@ -71,8 +81,4 @@ export default {
   height: 100%;
 }
 
-.gridMain {
-  display: grid;
-  grid-template-columns: auto 80%;
-}
 </style>

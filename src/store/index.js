@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { db } from '../firebase';
+import { db, storage } from '../firebase';
 
 Vue.use(Vuex);
 
@@ -10,6 +10,7 @@ export default new Vuex.Store({
     AllShirts: {},
     productToDelete: '',
     productToUpload: {},
+    productToEdit: {},
 
   },
   mutations: {
@@ -28,8 +29,10 @@ export default new Vuex.Store({
       delete state.AllShirts[`${payload}`];
     },
     setUploadProductMu(state, payload) {
-      console.log(`upload product mutation: ${payload}`);
       state.productToUpload = payload;
+    },
+    setProductToEditMu(state, payload) {
+      state.productToEdit = payload;
     },
   },
 
@@ -39,9 +42,7 @@ export default new Vuex.Store({
       const resObj = {};
       db.collection('Products/categories/t-shirts').get()
         .then((res) => {
-          console.log('res: ', res);
           res.forEach((element) => {
-            console.log(element.data().description);
             resObj[element.id] = element.data();
           });
           return commit('setAllShirtsMu', resObj);
@@ -55,7 +56,6 @@ export default new Vuex.Store({
       commit('setProductToDeleteMu', payload);
     },
     deleteProductDb({ commit }, payload) {
-      console.log(`product to delete ACTION ${payload}`);
       db.collection('Products/categories/t-shirts').doc(payload).delete()
         .then((res) => {
           console.log('t-shirt deleted: ', res);
@@ -66,16 +66,29 @@ export default new Vuex.Store({
       commit('setUploadProductMu', payload);
     },
     // eslint-disable-next-line no-unused-vars
-    uploadProductDb({ commit }, payload) {
-      console.log(`product to db: ${payload}`);
-      db.collection('Products/categories/t-shirts').add({
-        name: payload.name,
-        price: payload.price,
-        description: payload.description,
-        img: payload.img,
-      }).then((doc) => {
-        console.log(doc.id);
+    async uploadProductDb({ commit }, payload) {
+      // puting img to db
+      const ref = storage.ref();
+      const refImg = ref.child(`images/${payload.imgRawName}`);
+      const metaData = { contentType: payload.imgType };
+      await refImg.put(payload.imgRaw, metaData).then((e) => {
+        console.log('puting img: ', e);
       });
+      // uploading producto to db
+      await ref.child('images')
+        .child(payload.imgRawName)
+        .getDownloadURL()
+        .then((result) => {
+          payload.img = result;
+          db.collection('Products/categories/t-shirts').add({
+            name: payload.name,
+            price: payload.price,
+            description: payload.description,
+            img: payload.img,
+          }).then((doc) => {
+            console.log('product uploaded: ', doc.id);
+          });
+        });
     },
   },
 
@@ -88,6 +101,9 @@ export default new Vuex.Store({
     },
     getProductToUpload(state) {
       return state.productToUpload;
+    },
+    getProductToEdit(state) {
+      return state.productToEdit;
     },
   },
 

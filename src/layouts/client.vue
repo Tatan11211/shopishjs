@@ -17,26 +17,26 @@ import Navsearch from './components/Navsearch.vue'
 import Footer from './components/Footer.vue'
 
 export default {
-  name: 'Client',
-  data(){
-    return{
-      windowSize:0
-    }
+  name: 'client-layout',
+  data() {
+    return {
+      windowSize: 0,
+    };
   },
-  methods:{
-    setWindowSize(){
+  methods: {
+    setWindowSize() {
       this.windowSize = window.innerHeight;
-    }
+    },
   },
-  components:{
+  components: {
     Navsearch,
     Nav,
-    Footer
+    Footer,
   },
-  mounted(){
+  mounted() {
     this.setWindowSize();
-  }
-}
+  },
+};
 </script>
 
 <style>

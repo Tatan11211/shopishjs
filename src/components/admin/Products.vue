@@ -136,7 +136,7 @@
           data-bs-target="#newProductModal"
           >
           Nuevo producto
-        </button>
+      </button>
     </div>
   </div>
 </template>

@@ -6,6 +6,7 @@ import Dashboard from '../views/admin/Dashboard.vue';
 import Login from '../views/admin/Login.vue';
 import ProductsCrud from '../views/admin/ProductsCrud.vue';
 import AddProduct from '../views/admin/AddProduct.vue';
+import Notfound from '../views/404.vue';
 
 Vue.use(VueRouter);
 
@@ -36,17 +37,26 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
+    meta: { layout: 'default' },
     component: Login,
   },
   {
     path: '/ProductsCrud',
     name: 'ProductsCrud',
+    meta: { layout: 'admin' },
     component: ProductsCrud,
   },
   {
     path: '/AddProduct',
     name: 'AddProduct',
+    meta: { layout: 'admin' },
     component: AddProduct,
+  },
+  {
+    path: '*',
+    name: '404-view',
+    meta: { layout: 'default' },
+    component: Notfound,
   },
 ];
 

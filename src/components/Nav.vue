@@ -65,32 +65,6 @@ export default {
   transform: scale(1.05);
 }
 
-/* .navitem {
-  -webkit-animation: scale-up-ver-center 0.4s ease-in-out both;
-  animation: scale-up-ver-center 0.4s ease-in-out both;
-}
-
-@-webkit-keyframes scale-up-ver-center {
-  0% {
-    -webkit-transform: scaleY(0.4);
-            transform: scaleY(0.4);
-  }
-  100% {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
-  }
-}
-@keyframes scale-up-ver-center {
-  0% {
-    -webkit-transform: scaleY(0.4);
-            transform: scaleY(0.4);
-  }
-  100% {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
-  }
-} */
-
 @media (max-width: 991px) {
   .navitem {
     margin-top: 2px;
