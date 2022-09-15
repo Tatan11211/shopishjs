@@ -54,20 +54,24 @@ export default {
   methods: {
     ...mapActions([
       'deleteProductDb',
-      'setProductToDelete',
       'getProductsDb',
     ]),
-    ...mapMutations(['setProductToEditMu']),
+    ...mapMutations([
+      'setProductToEditMu',
+      'setProductToDeleteMu',
+      ]),
     confirmDelete() {
       console.log('eliminar el producto confirmado');
       this.$refs['delete-modal'].hide();
-      this.deleteProductDb(this.productToDelete);
-      this.resetProductToDelete();
-      this.$refs['delete-confirmation'].show();
-      this.getProductsDb();
+      this.deleteProductDb(this.productToDelete)
+      .then(() => {
+        this.resetProductToDelete();
+        this.$refs['delete-confirmation'].show();
+        this.getProductsDb();
+      });
     },
     resetProductToDelete() {
-      this.setProductToDelete('');
+      this.setProductToDeleteMu('');
     },
     resetProductToEdit() {
       this.setProductToEditMu(null);

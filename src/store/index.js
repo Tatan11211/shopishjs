@@ -52,18 +52,12 @@ export default new Vuex.Store({
         });
     },
     /* Setting the product to delete in state */
-    setProductToDelete({ commit }, payload) {
-      commit('setProductToDeleteMu', payload);
-    },
     deleteProductDb({ commit }, payload) {
       db.collection('Products/categories/t-shirts').doc(payload).delete()
-        .then((res) => {
-          console.log('t-shirt deleted: ', res);
+        .then(() => {
+          console.log('t-shirt deleted ');
         });
       commit('setNewShirtsListMu', payload);
-    },
-    setUploadProduct({ commit }, payload) {
-      commit('setUploadProductMu', payload);
     },
     // eslint-disable-next-line no-unused-vars
     async uploadProductDb({ commit }, payload) {
@@ -89,6 +83,42 @@ export default new Vuex.Store({
             console.log('product uploaded: ', doc.id);
           });
         });
+    },
+    /* eslint-disable-next-line */
+    async editProductDb({ commit }, payload) {
+      if (payload.img) {
+        console.log('sin edicion de imagen');
+        db.collection('Products/categories/t-shirts').doc(payload.id).update({
+          name: payload.name,
+          price: payload.price,
+          description: payload.description,
+          img: payload.img,
+        }).then(() => {
+          console.log('product edited: ');
+        });
+      } else {
+        console.log('editando : ', payload.id);
+        const ref = storage.ref();
+        const refImg = ref.child(`images/${payload.imgRawName}`);
+        const metaData = { contentType: payload.imgType };
+        await refImg.put(payload.imgRaw, metaData).then((e) => {
+          console.log('puting img: ', e);
+        });
+        await ref.child('images')
+          .child(payload.imgRawName)
+          .getDownloadURL()
+          .then((result) => {
+            payload.img = result;
+            db.collection('Products/categories/t-shirts').doc(payload.id).update({
+              name: payload.name,
+              price: payload.price,
+              description: payload.description,
+              img: payload.img,
+            }).then(() => {
+              console.log('product edited ');
+            });
+          });
+      }
     },
   },
 

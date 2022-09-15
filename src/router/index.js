@@ -2,7 +2,6 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Fishing from '../views/Fishing.vue';
-import Dashboard from '../views/admin/Dashboard.vue';
 import Login from '../views/admin/Login.vue';
 import ProductsCrud from '../views/admin/ProductsCrud.vue';
 import AddProduct from '../views/admin/AddProduct.vue';
@@ -28,11 +27,6 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard,
   },
   {
     path: '/login',

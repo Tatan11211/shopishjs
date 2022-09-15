@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from 'vuex';
+import { mapMutations } from 'vuex';
 
 export default {
   name: 'ProductCrud-component',
@@ -50,11 +50,10 @@ export default {
     img: String,
   },
   methods: {
-    ...mapActions(['setProductToDelete']),
-    ...mapMutations(['setProductToEditMu']),
+    ...mapMutations(['setProductToEditMu', 'setProductToDeleteMu']),
     sendId() {
       console.log('this product id: ', this.id);
-      this.setProductToDelete(this.id);
+      this.setProductToDeleteMu(this.id);
     },
     shortDescription(description) {
       if (description !== null) {

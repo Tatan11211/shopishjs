@@ -2,7 +2,8 @@
   <div class="d-flex align-items-center">
     <div class="form-content container">
       <form @submit.prevent="newProduct">
-        <h1>Add product</h1>
+        <h1 v-if="!this.productToEdit">Agregar producto</h1>
+        <h1 v-else>Actualizar producto</h1>
         <b-form-group
           label="Nombre del producto:"
           label-for="name-input"
@@ -125,7 +126,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['uploadProductDb']),
+    ...mapActions(['uploadProductDb', 'editProductDb']),
     onFileSelected(event) {
       this.imgType = event.target.files[0].type;
       console.log('type', this.imgType);
@@ -146,28 +147,40 @@ export default {
     /* validar con los videos el action que sube el producto e importarlo */
     async newProduct() {
       if (this.productToEdit) {
-        console.log('edit product');
-      } else {
-        console.log('new product');
         if (!this.$v.$invalid) {
-          if (this.fileSelected !== null) {
-            console.log('todos campos correctos');
+          if (this.fileSelected) {
             this.productToUpload.imgType = this.imgType;
             this.productToUpload.imgRawName = this.fileSelected.name;
             this.productToUpload.imgRaw = this.fileSelected;
+          } else {
+            this.productToUpload.img = this.productToEdit.img;
+          }
             this.productToUpload.name = this.$v.productName.$model;
             this.productToUpload.price = Number(this.$v.productPrice.$model);
             this.productToUpload.description = this.$v.productDescription.$model;
-            this.uploadProductDb(this.productToUpload);
-            this.$router.push('/productsCrud');
-          } else {
-            this.errorMessage = 'Debe seleccionar una imagen';
-          }
+            this.productToUpload.id = this.productToEdit.id;
+            this.editProductDb(this.productToUpload)
+            .then(() => {
+              this.$router.push('/productsCrud');
+            });
+        }
+      } else if (!this.$v.$invalid) {
+        if (this.fileSelected !== null) {
+          console.log('todos campos correctos');
+          this.productToUpload.imgType = this.imgType;
+          this.productToUpload.imgRawName = this.fileSelected.name;
+          this.productToUpload.imgRaw = this.fileSelected;
+          this.productToUpload.name = this.$v.productName.$model;
+          this.productToUpload.price = Number(this.$v.productPrice.$model);
+          this.productToUpload.description = this.$v.productDescription.$model;
+          this.uploadProductDb(this.productToUpload)
+          .then(() => {
+              this.$router.push('/productsCrud');
+          });
+        } else {
+          this.errorMessage = 'Debe seleccionar una imagen';
         }
       }
-    },
-    editProduct() {
-      console.log('edit product');
     },
   },
 
