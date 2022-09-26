@@ -1,34 +1,24 @@
 <template>
   <div class="home d-flex flex-column align-content-between">
-    <Navsearch />
-    <Nav />
     <div class="home">
-      <img alt="Vue logo" class="img-fluid" src="../assets/images/banner3.jpg">
+      <img alt="Vue logo" class="img-fluid" src='../assets/images/banner3.jpg'>
       <i class="fas fa-address-book"></i>
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
-import Navsearch from '../components/client/Navsearch.vue';
-import Nav from '../components/client/Nav.vue';
-import Footer from '../components/client/Footer.vue';
 
 export default {
   name: 'Home-view',
-  components: {
-    Navsearch,
-    Nav,
-    Footer,
-  },
+  layout: 'client-layout',
 };
 </script>
 
 <style scoped>
 
 .home {
-    height: 100%;
+  height: 100%;
 }
 
 </style>

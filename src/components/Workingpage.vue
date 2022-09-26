@@ -1,5 +1,5 @@
 <template>
-  <div class='d-flex flex-column align-items-center'>
+  <div class='working-onit d-flex flex-column align-items-center'>
     <h1 class='mt-5 size3'>Estamos trabajando en ello...</h1>
     <img
       class='img m-5 img-fluid'
@@ -18,5 +18,8 @@ export default {
 <style scoped>
 .img {
   max-width: 700px;
+}
+.working-onit{
+  height: 100%;
 }
 </style>

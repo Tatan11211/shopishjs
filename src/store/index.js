@@ -6,12 +6,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-
     AllShirts: {},
     productToDelete: '',
     productToUpload: {},
     productToEdit: {},
-
   },
   mutations: {
     /* eslint no-param-reassign: "error" */

@@ -13,11 +13,13 @@ const routes = [
   {
     path: '/',
     name: 'Home',
+    meta: { layout: 'client' },
     component: Home,
   },
   {
     path: '/fishing',
     name: 'Fishing',
+    meta: { layout: 'client' },
     component: Fishing,
   },
   {

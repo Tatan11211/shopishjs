@@ -83,9 +83,12 @@ export default {
 
 <style scoped>
 .footer {
-  margin-top: auto;
+/*   margin-top: auto;
+  background-color: black;
+   */
   background-color: black;
   padding: 20px;
+  clear: both;
 }
 
 .info {

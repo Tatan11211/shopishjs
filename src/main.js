@@ -11,9 +11,11 @@ import router from './router';
 import store from './store';
 import Admin from './layouts/Admin.vue';
 import Default from './layouts/Default.vue';
+import Client from './layouts/Client.vue';
 
 Vue.component('admin-layout', Admin);
 Vue.component('default-layout', Default);
+Vue.component('client-layout', Client);
 
 Vue.use(Vuelidate);
 // Make BootstrapVue available throughout your project

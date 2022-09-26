@@ -1,13 +1,12 @@
 <template>
-  <!-- <div class='card-content card flex'> -->
-  <div class='card-items flex flex-column'>
+  <div class='card-items d-flex flex-column'>
     <div class='title d-flex flex-row justify-content-center'>
       <h2 class='size4 ms-2'>{{ name }}</h2>
     </div>
     <div class='data-card'>
       <div class='image'>
         <img
-          src="/src/assets/images/logopesca.png"
+          src="../../assets/images/logopesca.png"
           class='img-product img-fluid'
           alt=''
         />
@@ -18,7 +17,6 @@
       </div>
     </div>
   </div>
-  <!-- </div> -->
 </template>
 
 <script>
