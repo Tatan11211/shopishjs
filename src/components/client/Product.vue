@@ -7,7 +7,7 @@
     <div class='data-card'>
       <div class='image'>
         <img
-          src='../assets/images/logopesca.png'
+          src="/src/assets/images/logopesca.png"
           class='img-product img-fluid'
           alt=''
         />

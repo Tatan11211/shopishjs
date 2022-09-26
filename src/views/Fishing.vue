@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import Navsearch from '../components/Navsearch.vue';
-import Nav from '../components/Nav.vue';
-import Footer from '../components/Footer.vue';
-import Grid from '../components/GridProducts.vue';
+import Navsearch from '../components/client/Navsearch.vue';
+import Nav from '../components/client/Nav.vue';
+import Footer from '../components/client/Footer.vue';
+import Grid from '../components/client/GridProducts.vue';
 
 // import store from '@/store';
 

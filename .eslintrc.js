@@ -1,4 +1,11 @@
 module.exports = {
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: require.resolve('@vue/cli-service/webpack.config.js'),
+      },
+    },
+  },
   env: {
     browser: true,
     es2021: true,

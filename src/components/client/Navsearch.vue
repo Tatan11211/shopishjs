@@ -9,7 +9,7 @@
       <b-navbar-brand class='brandimg' href='#'>
         <img
           class='logo img-fluid'
-          src='../assets/images/logopesca.png'
+          src='/src/assets/images/logopesca.png'
           alt='Reponsive image'
         />
       </b-navbar-brand>

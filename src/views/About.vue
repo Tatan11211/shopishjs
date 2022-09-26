@@ -8,13 +8,14 @@
 </template>
 
 <script>
-import Navsearch from '../components/Navsearch.vue';
-import Nav from '../components/Nav.vue';
+import Navsearch from '../components/client/Navsearch.vue';
+import Nav from '../components/client/Nav.vue';
 import Workingpage from '../components/Workingpage.vue';
-import Footer from '../components/Footer.vue';
+import Footer from '../components/client/Footer.vue';
 
 export default {
   name: 'About-view',
+  layout: 'admin-layout',
   components: {
     Navsearch,
     Nav,

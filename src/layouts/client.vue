@@ -2,19 +2,15 @@
   <div id="app" :style="`position:relative; height:${windowSize}px; overflow-y:scroll;`" class="d-flex flex-column">
     <Navsearch />
     <Nav />
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
     <router-view/>
     <Footer />
   </div>
 </template>
 
 <script>
-import Nav from './components/Nav.vue'
-import Navsearch from './components/Navsearch.vue'
-import Footer from './components/Footer.vue'
+import Nav from '../components/client/Nav.vue';
+import Navsearch from '../components/client/Navsearch.vue';
+import Footer from '../components/client/Footer.vue';
 
 export default {
   name: 'client-layout',
