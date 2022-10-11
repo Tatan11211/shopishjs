@@ -11,6 +11,7 @@ import Grid from '../components/client/GridProducts.vue';
 
 export default {
   name: 'Fishing-view',
+  layout: 'client-layout',
   data() {
     return {
     };

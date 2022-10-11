@@ -6,9 +6,11 @@
 			:key="index"
 		>
 			<Product
-				:name="item.name"
+				:id='index'
+        :name="item.name"
 				:price="item.price"
 				:description="item.description"
+        :img='item.img'
 			/>
 		</div>
 	</div>

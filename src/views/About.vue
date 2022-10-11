@@ -15,7 +15,7 @@ import Footer from '../components/client/Footer.vue';
 
 export default {
   name: 'About-view',
-  layout: 'admin-layout',
+  layout: 'client-layout',
   components: {
     Navsearch,
     Nav,

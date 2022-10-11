@@ -1,6 +1,7 @@
 <template>
   <div
     id='app'
+    :style="`position:relative; height:${windowSize}px; overflow-y:scroll;`"
     class='d-flex flex-column'
   >
     <component :is="layout">
