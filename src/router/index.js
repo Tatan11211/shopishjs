@@ -6,6 +6,7 @@ import Login from '../views/admin/Login.vue';
 import ProductsCrud from '../views/admin/ProductsCrud.vue';
 import AddProduct from '../views/admin/AddProduct.vue';
 import Notfound from '../views/404.vue';
+import SingleProduct from '../views/SigleProduct.vue';
 
 Vue.use(VueRouter);
 
@@ -53,6 +54,12 @@ const routes = [
     name: '404-view',
     meta: { layout: 'default' },
     component: Notfound,
+  },
+  {
+    path: '/singleProduct/:id',
+    name: 'singleProduct',
+    meta: { layout: 'default' },
+    component: SingleProduct,
   },
 ];
 

@@ -10,6 +10,7 @@ export default new Vuex.Store({
     productToDelete: '',
     productToUpload: {},
     productToEdit: {},
+    singleProduct: {},
   },
   mutations: {
     /* eslint no-param-reassign: "error" */
@@ -31,6 +32,9 @@ export default new Vuex.Store({
     },
     setProductToEditMu(state, payload) {
       state.productToEdit = payload;
+    },
+    setSingleProductMu(state, payload) {
+      state.singleProduct = payload;
     },
   },
 
@@ -118,6 +122,16 @@ export default new Vuex.Store({
           });
       }
     },
+    getSingleProductDb({ commit }, payload) {
+      console.log('id to db: ', payload);
+      db.collection('Products/categories/t-shirts').doc(payload).get()
+        .then((doc) => {
+          console.log('singleproduct', doc.data());
+          const singleProduct = doc.data();
+          singleProduct.id = doc.id;
+          return commit('setSingleProductMu', singleProduct);
+        });
+    },
   },
 
   getters: {
@@ -132,6 +146,9 @@ export default new Vuex.Store({
     },
     getProductToEdit(state) {
       return state.productToEdit;
+    },
+    getSingleProduct(state) {
+      return state.singleProduct;
     },
   },
 
