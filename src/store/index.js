@@ -11,6 +11,7 @@ export default new Vuex.Store({
     productToUpload: {},
     productToEdit: {},
     singleProduct: {},
+    shoppingCart: [],
   },
   mutations: {
     /* eslint no-param-reassign: "error" */
@@ -35,6 +36,10 @@ export default new Vuex.Store({
     },
     setSingleProductMu(state, payload) {
       state.singleProduct = payload;
+    },
+    setCartShoppingMu(state, payload) {
+      console.log('cart:', state.shoppingCart);
+      state.shoppingCart = payload;
     },
   },
 
