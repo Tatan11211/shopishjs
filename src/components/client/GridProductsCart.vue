@@ -1,43 +1,36 @@
 <template>
   <div>
-    <h1 class="mb-3">
-      Carrito de compras
-    </h1>
-    <div
-      v-for="(product, index) in shoppingCart"
-      :key="index"
-    >
-    <hr class="m-0">
+    <h1 class="mb-3">Carrito de compras</h1>
+    <div v-for="(product, index) in shoppingCart" :key="index">
+      <hr class="m-0" />
       <ProductCart
-        :id='product.id'
-        :name='product.name'
-        :price='product.price'
-        :img='product.img'
+        :id="product.id"
+        :name="product.name"
+        :price="product.price"
+        :img="product.img"
+        :amount="product.amount"
       />
-    <hr class="m-0">
+      <hr class="m-0" />
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import ProductCart from './ProductCart.vue';
+import { mapState } from "vuex";
+import ProductCart from "./ProductCart.vue";
 
 export default {
-name: 'GridProductsCart-component',
-data() {
-  return {
+  name: "GridProductsCart-component",
+  data() {
+    return {};
+  },
 
-  };
-},
+  computed: {
+    ...mapState(["shoppingCart"]),
+  },
 
-computed: {
-  ...mapState(['shoppingCart']),
-},
-
-components: {
-  ProductCart,
-},
-
+  components: {
+    ProductCart,
+  },
 };
 </script>

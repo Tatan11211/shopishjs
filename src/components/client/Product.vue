@@ -1,12 +1,12 @@
 <template>
-  <div class='card-items d-flex flex-column'>
-    <div class='title mt-3 d-flex flex-row justify-content-center'>
-      <h2 class='size4 ms-2'>{{ name }}</h2>
+  <div class="card-items d-flex flex-column">
+    <div class="title mt-3 d-flex flex-row justify-content-center">
+      <h2 class="size4 ms-2">{{ name }}</h2>
     </div>
-    <div class='data-card'>
-      <div class='image'>
-        <router-link :to="{ name: 'singleProduct',params: {id: id} }">
-        <img
+    <div class="data-card">
+      <div class="image">
+        <router-link :to="{ name: 'singleProduct', params: { id: id } }">
+          <img
             v-if="img"
             :src="img"
             class="img-product img-fluid"
@@ -20,14 +20,11 @@
           />
         </router-link>
       </div>
-      <div class='data mb-3 mx-3'>
-        <h3 class='size3'>{{ price }}$</h3>
-        <h4 class='size2'>{{ this.shortDescription(description) }}</h4>
+      <div class="data mb-3 mx-3">
+        <h3 class="size3">{{ price }}$</h3>
+        <h4 class="size2">{{ this.shortDescription(description) }}</h4>
       </div>
-      <button
-        class="btn btn-success mb-3"
-        @click="addToCart()"
-      >
+      <button class="btn btn-success mb-3" @click="addToCart()">
         Agregar al carrito
       </button>
     </div>
@@ -35,10 +32,16 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex';
+import { mapMutations, mapState } from "vuex";
 
 export default {
-  name: 'Product-component',
+  name: "Product-component",
+  data() {
+    return {
+      amount: 1,
+      newShoppingCart: {},
+    };
+  },
   props: {
     id: String,
     name: String,
@@ -47,10 +50,14 @@ export default {
     img: String,
   },
   computed: {
-    ...mapState(['shoppingCart']),
+    ...mapState(["shoppingCart", "productReapeated"]),
   },
   methods: {
-    ...mapMutations(['setSingleProductMu', 'setCartShoppingMu']),
+    ...mapMutations([
+      "setSingleProductMu",
+      "addNewProductCartMu",
+      "repeatedProductCartMu",
+    ]),
     openSingleProduct() {
       const singleProduct = {
         id: this.id,
@@ -59,33 +66,54 @@ export default {
         description: this.description,
         img: this.img,
       };
-      console.log('abre producto unitario', singleProduct);
+      console.log("abre producto unitario", singleProduct);
       this.setSingleProductMu(singleProduct);
-      this.$router.push('/singleProduct');
+      this.$router.push("/singleProduct");
     },
     shortDescription(description) {
       if (description !== null) {
         const descLenght = description.length;
-        let shortDescrip = '';
+        let shortDescrip = "";
         if (descLenght > 50) {
           shortDescrip = description.substr(0, 100);
-          shortDescrip += '...';
+          shortDescrip += "...";
           return shortDescrip;
         }
         return description;
       }
-      return 'No tiene descripción.';
+      return "No tiene descripción.";
     },
     addToCart() {
-      const product = {
-        id: this.id,
-        name: this.name,
-        price: this.price,
-        description: this.description,
-        img: this.img,
-      };
-      this.shoppingCart.push(product);
-      this.setCartShoppingMu(this.shoppingCart);
+      // encontrar la manera de modificar el amount sin agregar productos extras
+      console.log(
+        `value: ${this.id}, ${this.name}, ${this.price}, ${this.description},${this.amount}`
+      );
+      this.repeatedProductCartMu(this.id);
+      if (this.productReapeated) {
+        console.log(`repetido`);
+      } else {
+        console.log(`not repetido`);
+        this.addNewProductCartMu({
+          id: this.id,
+          name: this.name,
+          price: this.price,
+          description: this.description,
+          img: this.img,
+          amount: this.amount,
+        });
+      }
+    },
+    repeatedProduct(id) {
+      let repeated = false;
+      console.log(`value: ${this.shoppingCart}`);
+      console.log(`value cart: ${this.shoppingCart.hasOwnProperty.call(id)}`);
+      if (Object.entries(this.shoppingCart).length === 0) return true;
+      repeated = this.shoppingCart.hasOwnProperty.call(id);
+      return repeated;
+    },
+
+    deleteProductCart(product) {
+      return this.shoppingCart.filter((item) => item.id !== product.id);
     },
   },
 };
@@ -120,5 +148,4 @@ export default {
     font-size: 0.6rem !important;
   }
 }
-
 </style>
