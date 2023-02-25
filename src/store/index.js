@@ -44,13 +44,10 @@ export default new Vuex.Store({
     },
     addNewProductCartMu(state, payload) {
       state.shoppingCart.push(payload);
-      console.log(`shoppingcart added: ${state.shoppingCart.length}`);
     },
-    repeatedProductCartMu(state, payload) {
-      console.log(`value: state${state}, payload${payload}`);
+    addRepeatedProductCartMu(state, payload) {
       if (state.shoppingCart.length !== 0) {
         state.shoppingCart.forEach((element) => {
-          console.log(`element: ${element.id}`);
           if (element.id === payload) {
             element.amount += 1;
             state.productReapeated = true;
@@ -58,7 +55,30 @@ export default new Vuex.Store({
             state.productReapeated = false;
           }
         });
+      } else {
+        state.productReapeated = false;
       }
+    },
+    deleteProductCartMu(state, payload) {
+      let units = false;
+      let product = null;
+      if (state.shoppingCart.length !== 0) {
+        state.shoppingCart.forEach((element, index) => {
+          if (element.id === payload) {
+            product = index;
+            if (element.amount > 1) {
+              element.amount -= 1;
+              units = true;
+            }
+          }
+        });
+        if (!units) {
+          state.shoppingCart.splice(product, 1);
+          units = false;
+          product = null;
+        }
+      }
+      return state.shoppingCart;
     },
   },
 

@@ -57,19 +57,12 @@ export default {
   },
 
   methods: {
-    ...mapMutations(["setCartShoppingMu"]),
+    ...mapMutations(["setCartShoppingMu", "deleteProductCartMu"]),
     formatter(val) {
       return formatter.format(val);
     },
     deleteItemCart() {
-      const newShoppingCart = [];
-      this.shoppingCart.map((item) => {
-        if (item.id !== this.id) {
-          newShoppingCart.push(item);
-        }
-        return true;
-      });
-      this.setCartShoppingMu(newShoppingCart);
+      this.deleteProductCartMu(this.id);
     },
   },
 };

@@ -56,7 +56,7 @@ export default {
     ...mapMutations([
       "setSingleProductMu",
       "addNewProductCartMu",
-      "repeatedProductCartMu",
+      "addRepeatedProductCartMu",
     ]),
     openSingleProduct() {
       const singleProduct = {
@@ -84,14 +84,8 @@ export default {
       return "No tiene descripción.";
     },
     addToCart() {
-      // encontrar la manera de modificar el amount sin agregar productos extras
-      console.log(
-        `value: ${this.id}, ${this.name}, ${this.price}, ${this.description},${this.amount}`
-      );
-      this.repeatedProductCartMu(this.id);
-      if (this.productReapeated) {
-        console.log(`repetido`);
-      } else {
+      this.addRepeatedProductCartMu(this.id);
+      if (!this.productReapeated) {
         console.log(`not repetido`);
         this.addNewProductCartMu({
           id: this.id,
@@ -103,15 +97,6 @@ export default {
         });
       }
     },
-    repeatedProduct(id) {
-      let repeated = false;
-      console.log(`value: ${this.shoppingCart}`);
-      console.log(`value cart: ${this.shoppingCart.hasOwnProperty.call(id)}`);
-      if (Object.entries(this.shoppingCart).length === 0) return true;
-      repeated = this.shoppingCart.hasOwnProperty.call(id);
-      return repeated;
-    },
-
     deleteProductCart(product) {
       return this.shoppingCart.filter((item) => item.id !== product.id);
     },
